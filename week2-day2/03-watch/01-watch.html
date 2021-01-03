@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        用户名: <input type="text" v-model='username'><span style="color:red">{{message}}</span>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.0.0/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                username:"",
+                message:"",
+            },
+            //watch默认为浅监视  可以监视基本数据类型和复合类型 的第一层变化
+            watch:{
+                //当watch监听的username 数据发生改变时 回调函数执行
+                'username':function(newValue,oldValue){
+                    console.log(typeof(newValue),oldValue)
+                    if(newValue.length < 3){
+                        this.message = '用户名不能少于3个字符'
+                        return
+                    }
+                    if(newValue.length > 10){
+                        this.message = '用户名不能大于10个字符'
+                        return
+                    }
+                  this.message = ''
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

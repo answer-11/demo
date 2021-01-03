@@ -1,0 +1,9 @@
+{
+  "name": "02-removeXSS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dls-htmlparser": "^1.0.4"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "03art-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "art-template": "^4.13.2"
+  }
+}

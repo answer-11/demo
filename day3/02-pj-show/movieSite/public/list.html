@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>	
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+	<title>首页</title>
+</head>
+<body>
+	<!-- 导航 -->
+	<nav class="navbar navbar-default" role="navigation">
+
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">我爱电影网</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/index.html">我爱电影网</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="/index.html">首页</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
+						<ul class="dropdown-menu" id="categoryContent">
+
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" name="kw" id="kw" class="form-control" />
+					</div>
+					<button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right" id="showUser">
+					<li>
+						<a href="./register.html">注册</a>
+					</li>
+
+					<li>
+						<a href="./login.html">登录</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+
+	<!-- 巨幕 -->
+	<div class="container">
+			<div class="row clearfix">
+                   
+					<div class="col-md-12 column">
+						<div class="jumbotron">
+							<h1>
+								我爱电影网
+							</h1>
+							<p>
+								我爱电影网,涵盖最新电影、好看的电影、经典电影、电影推荐、免费电影、高清电影在线观看及海量最新电影图文视频资讯,看电影就上电影网dy.com。
+							</p>
+							<p>
+								 <a class="btn btn-primary btn-large" href="/index.html">查看更多</a>
+							</p>
+						</div>
+					</div>
+				</div>
+	</div>
+	<hr>
+
+	<!-- 主要区域  -->
+	<div class="container">
+		<div class="row clearfix">
+            <h2 class="text-success">分类展示</h2>
+
+			<div class="col-md-12" id="content">
+
+			</div>
+			
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="button" id="loadMoreBtn" class="btn btn-success btn-lg">加载更多</button>
+            </div>
+        </div>
+	</div>
+	
+	<hr>
+
+	<!-- 底部分类 -->
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="row clearfix">
+					<div class="col-md-3 column">
+						<blockquote>
+							<p>
+								> 专注于电影资源的传播
+
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6 column">
+						<div class="row clearfix">
+							<div class="col-md-4 column">
+								<h4>常见问题</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何获取最新的电影资源？</a>
+									</li>
+									<li>
+											<a href="javascript:;">如何购买VIP</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>帮助于反馈</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何找回密码？</a>
+									</li>
+									<li>
+										<a href="javascript:;">手机号码如何登陆？</a>
+									</li>
+									
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>关于</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">发展历程</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<img alt="140x140" src="./public/imgs/qr.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<!-- 顶部版权 -->
+	<div class="container">
+		<div class="row clearfix">
+				<div class="col-md-8 column">
+					<blockquote>
+						<p>
+							CopyRight &copy; 2019 我爱开发网官方网站
+						</p> <small>专注于电影资源的传播  <a href="http://www.beian.miit.gov.cn">粤ICP备xx21114号</a></small>
+					</blockquote>
+				</div>
+				
+		</div>		
+	</div>
+</body>
+</body>
+</html>
+<script src="./fetch.js"></script>
+<script src="./check.js"></script>
+
+<script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>
+<script>
+
+	let currentUrl = location.href.split('?');
+	currentUrl = currentUrl[1].split('=');
+	let cateId = currentUrl[1];
+	var url = `/api/v1/movie/category/list?cateId=${cateId}&page=1&size=8`;
+
+	function getMovieData(url, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('get', url);
+		xhr.onreadystatechange = function () {
+			if( xhr.readyState === 4 && xhr.status === 200 ){
+				let result = JSON.parse( xhr.responseText );
+				callback(result);
+			}
+		}
+		xhr.send();
+	}
+	getMovieData(url, (response)=> {
+		if( response.error_code === 0 ){
+			const movieList = response.result.moviesInfo;
+			let _html = ``;
+			movieList.forEach( item => {
+				_html += `<div class="col-md-4">
+						<div class="thumbnail">
+							<img style="width: 100px;height: 100px;" src="${item.movieImg}" />
+							<div class="caption">
+								<h3>
+									${item.movieName}
+								</h3>
+								<p>发布时间：${item.createdAt}</p>
+								<p>演员：${item.actors.substring(1, 6)} ...</p>
+								<p>导演：${item.director.substring(1, 6)} ...</p>
+								<p>是否收费：${item.isVip ? '<span class="text-danger">收费</span>' :'<span class="text-default">不收费</span>'}</p>
+								<p>浏览量：${item.pv}</p>
+								<p>分类：${item.cateInfo[0].cateName}</p>
+								<p>
+										<a class="btn btn-primary" href="/detail.html?movieId=${item._id}">详情</a>
+										${item.isVip ? `<a class="btn btn-danger" href="/buy.html?movieId=${item._id}">购买</a>` :''}
+										${item.isVip ? `<a class="btn btn-info" href="/cart.html?movieId=${item._id}">+购物车</a>` :''}
+								</p>
+							</div>
+						</div>
+					</div>`
+			} )
+			$("#content").html(_html);
+		}
+	});
+
+</script>

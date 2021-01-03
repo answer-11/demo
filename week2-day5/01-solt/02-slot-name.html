@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.0/css/bootstrap.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.0/js/bootstrap.js"></script>
+<!-- bootstrap4.5 已经废弃了面板功能 -->
+</head>
+
+<body>
+    <div class="container">
+        <!-- 需求：我们要模拟bt开发一个面板  1.内容是不能写死，而是由使用者调用时后动态传递 2.面板里面的头部、主体内容、底部内容是有严格的顺序问题，因为在template里面已经把顺序固定好了-->
+        <!-- bootstrap里面存着一个panel面板 -->
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h2>头部</h2>
+            </div>
+            <div class="panel-body">
+                <h2>body</h2>
+            </div>
+            <div class="panel-footer">
+                <h2>footer</h2>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+        <!-- <div></div> -->
+        <div class="container">
+            <div class="row">
+                <!-- 栅格化系统 col-md-offset 列偏移-->
+                <div class="col-md-6 col-md-offset-2">
+                    <my-panel>
+                        <div slot="header">
+                            头部
+                        </div>
+                        <div slot="body">
+                            body
+                        </div>
+                        <div slot="footer">
+                            footer
+                        </div>
+                        <div>
+                            如果我们在调用组件的时候，没有在组件的调用处指定 slot 属性，则该区域的内容会被放置到 slot 的name 为 default 的这个插槽里面。
+                        </div>
+                    </div>
+                    </my-panel>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 如果slot插槽具有name属性 我们一般称之为具名（具有名称）插槽，或者有名（有名字）插槽
+        //如果slot插槽没有name属性 则我们称之为匿名插槽
+        Vue.component('my-panel', {
+            template: `
+                <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h2>头部</h2>
+                <slot name="header"></slot>
+            </div>
+            <div class="panel-body"> 
+                <h2>body</h2>
+                <slot name="body"></slot>
+                <hr>
+                <slot name="default">slot如果没有使用name属性，则该该属性的默认值为 defult</slot>
+            </div>
+            <div class="panel-footer">
+                <h2>footer</h2>
+                <slot name="footer">可以设置底部的默认值，如果没有传递的情况下，该区域的内容会显示</slot>
+            </div>
+            </div>
+            `
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {}
+        })
+    </script>
+</body>
+
+</html>

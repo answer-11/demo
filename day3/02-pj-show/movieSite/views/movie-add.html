@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/xadmin.css">
+    <script type="text/javascript" src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]--></head>
+
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <!-- 注意：如果要做文件上传，则必须使用  enctype="multipart/form-data" 使用 multer-->
+        <!--http://www.expressjs.com.cn/en/resources/middleware/multer.html 1. 解析普通的表单提交，没有文件上传  2. 可以支持文件上传-->
+
+        <!--没有文件上传：enctype="application/x-www-form-urlencoded" body-parser -->
+        <!--http://www.expressjs.com.cn/en/resources/middleware/body-parser.html-->
+
+        <form class="layui-form" method="POST" action="/admin/movie-add" enctype="multipart/form-data" >
+            <div class="layui-form-item">
+                <label for="movieName" class="layui-form-label">
+                    <span class="x-red">*</span>电影名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="movieName" name="movieName" lay-verify="required"  autocomplete="off" class="layui-input"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="movieImg" class="layui-form-label">
+                    <span class="x-red">*</span>电影封面</label>
+                <div class="layui-input-inline">
+                    <input type="file" id="movieImg" name="movieImg" lay-verify="required"  autocomplete="off" class="layui-input"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="bianju" class="layui-form-label">
+                    <span class="x-red">*</span>编剧</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="bianju" name="bianju" lay-verify="required" autocomplete="off" class="layui-input"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="actors" class="layui-form-label">
+                    <span class="x-red">*</span>演员</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="actors" name="actors"  autocomplete="off"
+                           class="layui-input"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="director" class="layui-form-label">
+                    <span class="x-red">*</span>导演</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="director" name="director" autocomplete="off" class="layui-input"></div>
+            </div>
+
+            <!--实体符号-->
+           <!-- <div>
+                &lt;!&ndash;为什么要这样设计？&ndash;&gt;
+                今天学习了三个标签
+                &lt;h1&gt;标题1 &lt;/h1&gt;
+                &lt;h2&gt;标题2 &lt;/h2&gt;
+                &lt;p&gt;段落 &lt;/p&gt;
+                &lt;!&ndash;<script>alert(1)</script>&ndash;&gt;
+            </div>-->
+            <!--2. 功能 3. 性能-->
+            <!--1. 安全 2. 功能 3. 性能-->
+            <!--网络安全：xss csrf 攻击 用户提交的数据包含了可执行的代码 -->
+            <!-- art-template 默认会对html字符串进行转义，转换为实体符号，为了避免Xss攻击-->
+            <!--如果不希望转义，则加上@号-->
+
+            <!-- 电影存储分类的时候，不要存储分类的名称，而是存储分类的id 因为分类的名称用户后期是可以编辑的。如果存的是电影的分类名称，则不合理。如果是存储的电影分类的id，则可以根据分类id获取最新的分类名称-->
+            <div class="layui-form-item">
+                <label for="cateId" class="layui-form-label">
+                    <span class="x-red">*</span>电影分类</label>
+                <div class="layui-input-inline">
+                    <select id="cateId" name="cateId" class="valid">
+                        <option value="">请选择...</option>
+                        {{ each cateData}}
+                        <!--注意事项，art-template 会对html字符串进行转义输出-->
+                            <option value="{{@ $value._id }}">{{ $value.cateName }}</option>
+                        {{ /each }}
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="pv" class="layui-form-label">
+                    <span class="x-red">*</span>浏览数</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="pv" name="pv" lay-verify="required" autocomplete="off" class="layui-input"></div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="x-red">*</span>收费</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="isVip" value="1" lay-skin="primary" title="是" checked="">
+                    <input type="radio" name="isVip" value="0" lay-skin="primary" title="否">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="price" class="layui-form-label">
+                    <span class="x-red">*</span>价格</label>
+                <div class="layui-input-inline">
+                    <input type="number" id="price" name="price" value="0"  autocomplete="off"
+                           class="layui-input"></div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label for="loadUrl" class="layui-form-label">
+                    <span class="x-red">*</span>网盘地址</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="loadUrl" name="loadUrl" lay-verify="required" autocomplete="off" class="layui-input"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="secret" class="layui-form-label">
+                    <span class="x-red">*</span>提取码</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="secret" name="secret" lay-verify="required" autocomplete="off" class="layui-input"></div>
+            </div>
+
+
+
+            <div class="layui-form-item layui-form-text">
+                <label for="descp" class="layui-form-label">描述</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" id="descp" name="descp" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <button class="layui-btn" type="submit">增加</button>
+            </div>
+</form>
+</div>
+</div>
+<script>
+    layui.use(['form', 'layer'],function () {
+        $ = layui.jquery;
+        var form = layui.form;
+
+        var layer = layui.layer;
+    });
+</script>
+
+</body>
+
+</html>

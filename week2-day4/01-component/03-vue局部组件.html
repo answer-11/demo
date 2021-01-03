@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <mycomponents></mycomponents>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            //局部组件，写在实例化参数里里面
+            //components obj可以定义多个局部组件
+            //每个key(组件名称，遵循全局命名规范) value(组件对象，组件定义描述) 键值对就是一个局部组件
+            components: {
+                // 局部组件的对象描述和全局组件的对象描述完全一样
+                'mycomponents': {
+                    data() {
+                        return {
+                            counter: 0
+                        }
+                    },
+                    template: `
+                <div>
+                    <p>{{counter}}</p>
+                    <button @click='add'>增加</button>
+                </div>
+            `,
+                    methods: {
+                        add: function () {
+                            this.counter++
+                        }
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

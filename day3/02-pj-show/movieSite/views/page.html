@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .paginator a{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            border-shadow: 0 0 2px #cdf;
+            font-size: 22px;
+        }
+
+        .paginator a.paginator-current{
+
+            background-color: #009688;
+            color: #ffffff;
+
+        }
+
+        .paginator a:hover{
+
+            background-color: #fffff1;
+            color: gold;
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="paginator"><a href="/admin/movie-list?page=1" class="paginator-current paginator-page-first">1</a><a href="/admin/movie-list?page=2" class="paginator-page">2</a><a href="/admin/movie-list?page=3" class="paginator-page">3</a><a href="/admin/movie-list?page=4" class="paginator-page">4</a><a href="/admin/movie-list?page=5" class="paginator-page paginator-page-last">5</a><a href="/admin/movie-list?page=2" class="paginator-next">Next</a></div>
+
+
+</body>
+</html>

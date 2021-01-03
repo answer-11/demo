@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <div id="app">
+        firstName:<input type="text" v-model='firstName'>
+        <p>{{firstName}}</p>
+        <!-- ECMA写法 -->
+        <p>转化为大写:{{firstName.toUpperCase()}}</p>
+        <p>转化为小写:{{firstName.toLowerCase()}}</p>
+        <!--使用 vuejs 1.x -->
+        <!-- 为了以后的业务方便和代码的维护 可以更好的使用这个代码  所以我们可以封装成一个方法 写在methods内 -->
+        <p>转化为大写:{{myUpperCase(firstName)}}</p>
+        <!-- 过滤器用法 -->
+        <p>{{firstName | capitalize}}</p>
+        <!--需求：希望输入的内容，首字母大写，其他全部小写-->
+        <p>{{firstName | lowercase | capitalize}}</p>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/1.0.17/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                firstName:'andy'
+            },
+            methods:{
+                // 函数是为了代码的复用
+                myUpperCase(value){
+                    return value.toUpperCase()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

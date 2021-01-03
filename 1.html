@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sjx {
+            width: 0px;
+            height: 0px;
+            /* border: 10px solid #ccc; */
+            border-width: 30px;
+            border-style: solid;
+            border-color: rgb(255, 72, 0) transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sjx"></div>
+
+
+
+    <!-- 如何获取下面表单 select
+<form name="a">
+<select name="a" size="1" id=”obj”>
+<option id="text" value="a">1</option>
+<option id="text" value="b">2</option>
+<option id="text" value="c">3</option>
+</select>
+</form> 域的选择部分的文本？() -->
+
+    <script>
+      (function(){
+        const keys = [];
+        const iframe = document.createElement("iframe")
+        iframe.onload = function(){
+            const iframeKeys = Object.keys(iframe.contentWindow);
+            Object.keys(window).forEach(function(key){
+                if(!(iframeKeys.includes(key))){
+                    keys.push(key)
+                }
+            });
+            console.log(keys)
+        }
+        iframe.src = 'about:blank';
+        document.body.appendChild(iframe);
+      })();
+        //    function a(m,n){
+        //        var b = function(i){
+        //             return i<= m?i*b(i+1):1  
+        //        }
+        //        return b(m-n+1)
+        //    }
+        //    console.log(a(5,1))
+        // var text = document.getElementById("text")
+        // var arr =[]
+        // arr.push(text)
+        // arr.forEach(function(item){
+        //     console.log(item.text)
+        // })
+        // console.log(text.text)   
+        // for(var i = 0;i<=3;i++){
+        //     var text = document.getElementById("text")
+        //     arr.push(text)
+        // }
+        //  arr.forEach(function(item){
+        //     console.log(item.text)
+        // })
+        // console.log(text.text)
+
+
+        // function print(a, b) { //a=2 b=0
+        //     console.log(b)// a=0  b=undefined
+        //     return {
+        //         hello: function (c) {
+        //             console.log(c, a) //c =2  a=0
+        //             return print(c, a) //返回 c=2 a= 0   
+        //         }
+        //     }
+        // }
+        // // [undefind,2,0,0,4]
+        // var objA = print(0)
+        // objA.print(2)//
+        // objA.print(4)
+
+        // objA.print(8)
+        // // var objB = print(0).hello(2).hello(4).hello(8) //0 2 4 undefined
+        // var objC = print('hello').hello("bye");//hello
+        // // objC.print('hello')//bye
+        // objC.print('bye')//bye
+
+        // function num (a,b){
+        //     console.log(a)
+        //     console.log(b)
+        //     return{
+        //         num:function(c){
+        //             return num(c,a)
+        //         }
+        //     }
+        // }
+        // var A= num(0)
+        // A.num(1)
+        // A.num(2)
+        // A.num(3)
+        // A.num(4)
+
+
+        // for (var i = 0; i < 5; i++) {
+        //     (function (i) {
+        //         setTimeout(function () {
+        //             console.log(i)
+        //         }, 1000)
+
+        //     })(i)
+        // }
+        // for (let i = 0; i < 5; i++) {
+        //     (function (i) {
+        //        var a = setTimeout(function () {
+        //         clearTimeout(this.a)
+        //             console.log(i)
+
+        //         }, 1000)
+
+        //     })(i)
+        // }
+
+
+        // var add = function(x){  //x=1
+        //     var sum = 1;  
+        //     var num = 1
+        //     num++;
+        //     var tmp = function(x){  
+        //         sum = sum + x;   //sum =2
+        //         num++
+        //         return tmp;  //返回tmp函数
+        //     }  
+        //     // console.log(tmp.toString)
+        //     tmp.toString = function(){  
+
+        //         console.log(sum,num)
+        //         num++
+        //         return sum;  
+        //     }  
+        //     console.log(tmp.toString)
+        //     return tmp; //返回tmp 
+        // } 
+        // console.log(add()(2)(3)(4)) //--> 6
+
+        function fn(a, b) {
+            // return a+ b  
+        }
+        var re = fn(10, 20)
+        console.log(re)
+    </script>
+</body>
+
+</html>

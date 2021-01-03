@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <father-component></father-component>
+        <!-- <son-component></son-component> -->
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component("father-component", {
+            data() {
+                return {
+                    money: 1000,
+                    container:0
+                }
+            },
+            methods: {
+                //1. 需要在 父组件定义好回调函数
+                callback: function (data) {
+                    console.log(data)
+                    this.container = data.money
+                }
+            },  
+            //2 把回调函数通过自定义事件的方式绑定在子组件的上面   使用 $on(eventName) 绑定事件
+            template: 
+                `
+                <div>
+                    <p>father</p>
+                    <p>来自son的问候:{{container}}</p>
+                    <son-component @giveMoney="callback" :qian='money + container'></son-component>
+                    
+                </div>
+                `,
+
+        })
+        //3. 子组件触发 第二步自定义的事件 givemoney   使用 $emit(eventName) 触发事件
+        Vue.component("son-component", {
+            //prop 是子组件用来接受父组件传递过来的数据的一个自定义属性。
+            // 父组件的数据需要通过 props 把数据传给子组件
+            props: ['qian'],
+            methods:{
+                clickHander(){
+                    //3.1 触发的是父组件里面事先定义好的callback函数
+                    //参数2 代表的传递的数据 可以在callback里面使用
+                    this.$emit('giveMoney',{money:1000})
+                }
+            },
+            template:
+                `
+                <div>
+                    <p >son</p>
+                    <p>{{qian}}</p>
+                    <button @click="clickHander">no zuo no dai by in try</button>
+                </div>
+                 `,
+
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {}
+        })
+    </script>
+
+</body>
+
+</html>

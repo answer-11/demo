@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <!--需求：每增加一个用户，用户的信息保存在一个对象数组里面-->
+    <div id="app">
+        用户名: <input type="text" v-model='username'>
+        <hr>
+        密码:<input type="text" v-model='password'>
+        <hr>
+        <button >增加</button>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.0.0/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                username:"",
+                message:"",
+                password:'',
+                addList:[
+                    {
+                        id:1,
+                        username:"xiaoxiao",
+                        password:123
+                    },
+                    {
+                        id:2,
+                        username:"qiqi",
+                        password:321
+                    }
+                ]
+            },
+            // methods:{
+            //     //当点击增加时 add函数执行 用户输入的值就为属性值  同时添加到数组中
+            //     add:function(){
+            //         this.addList.push({
+            //             username:this.username,
+            //             //属性:username 属性值：用户输入的内容
+            //             password:this.password
+            //         })
+            //         // console.log(this.addList)
+            //     },
+                
+            // },
+          watch:{
+              addList:{
+                  handler:function(newVal,oldVal){
+                      console.log(newVal,oldVal)
+                  },
+                  deep:true
+              }
+         
+          }
+           
+        })
+        console.log(vm);
+      
+    </script>
+</body>
+</html>

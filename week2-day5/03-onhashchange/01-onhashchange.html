@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>导航栏</h2>
+    <ul>
+        <li><a href="#news">新闻</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#home">主页</a></li>
+    </ul>
+    <hr>
+    <div id="container">
+
+    </div>
+    <!-- <script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script> -->
+    <script>
+        var container = document.getElementById("container")
+        window.onhashchange = function(){
+            console.log(location.hash)
+            if(location.hash === '#news'){
+                content = "展示新闻内容"
+            }else if(location.hash === '#about'){
+                content = "展示关于内容"
+            }else if(location.hash === '#home'){
+                content = "展示主页内容"
+            }else{
+                content = '404页面丢失了'
+            }
+            container.innerHTML = content   //原生写法
+            // $('#container').html(content)  jq写法
+        }
+    </script>
+</body>
+</html>

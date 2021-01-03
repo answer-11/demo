@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{firstName | fklowercase}}</p>
+        <p>{{firstName | fkuppercase('$')}}</p>
+
+        <!-- 局部过滤 -->
+        <p>{{firstName |nklowercase}}</p>
+        <p>{{firstName |nkuppercase}}</p>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.0.0/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>
+
+    <script>
+        //全局过滤
+        Vue.filter('fklowercase',function(input,params){
+            return input.toLowerCase();
+        });
+        Vue.filter('fkuppercase',function(input,params){
+            console.log(params)
+            return params +  input.toUpperCase() ;
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                firstName:'andy'
+            },
+            //局部过滤
+            filters:{
+                'nklowercase':function(input,params){
+                    return input.toLowerCase()
+                },
+                'nkuppercase':function(input,params){
+                    return input.toUpperCase()
+                }
+            }
+            
+               
+            
+        })
+    </script>
+</body>
+</html>

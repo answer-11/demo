@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>注意：组件不做任何处理的情况下，如果尝试把组件当成原生HTML标签使用，在其内部存放内容的时候，是不会显示的，组件的内容会被组件定义时候的 template里面的标签全部替换</p>
+        <p>需求：有的时候我们可以开发出来一些工具组件，例如弹窗组件，那么这个时候弹出的内容应该不是组件内部的template里面写死的，而是由调用动态传递进行显示，如何解决呢？需要使用到插槽完成</p>
+    
+        <h1>原生的HTML标签的内部是可以存放内容的</h1>
+
+        <my-component>component可以理解成插头</my-component>
+        
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //插槽一般在使用第三方的组件库的时候使用的特别多。第三方的组件库开发出来是供别人使用的
+        // solt 是一个占位符 可以理解成为插排
+        // 当component与slot都有内容  那组件标签内的内容会覆盖slot的内容
+        Vue.component('my-component',{
+            template:`
+                <div>
+                    <h2>插槽知识点</h2>
+                    <p>这是个组件</p>
+
+                    <slot>这是<slot>
+                </div>
+            `
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{}
+        })
+    </script>
+</body>
+</html>

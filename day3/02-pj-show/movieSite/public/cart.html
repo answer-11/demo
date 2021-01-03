@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+
+    <title>用户个人中心</title>
+</head>
+<body>
+<!-- 导航 -->
+<nav class="navbar navbar-default" role="navigation">
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"><span class="sr-only">我爱电影网</span><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/index.html">我爱电影网</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/index.html">首页</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
+                    <ul class="dropdown-menu" id="categoryContent">
+
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" name="kw" id="kw" class="form-control"/>
+                </div>
+                <button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right" id="showUser">
+                <li>
+                    <a href="./register.html">注册</a>
+                </li>
+
+                <li>
+                    <a href="./login.html">登录</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<!-- 巨幕 -->
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="jumbotron">
+                <h1>
+                    我爱电影网
+                </h1>
+                <p>
+                    我爱电影网,涵盖最新电影、好看的电影、经典电影、电影推荐、免费电影、高清电影在线观看及海量最新电影图文视频资讯,看电影就上电影网dy.com。
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="/index.html">查看更多</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<!-- 主要区域  -->
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-sm-offset-1 col-md-10">
+            <div class="row">
+
+
+                <hr>
+                <h3 class="text-success">购物车列表</h3>
+
+                <table class="table table-bordered table-hover table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <td><input type="checkbox" value="false" id="selectAll" name="selectAll">全选</td>
+                        <th>序号</th>
+                        <th>电影名称</th>
+                        <th>单价（元）</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="content">
+                    <!-- 所有被checked的都要找出来-->
+
+                             <!--支付-->
+
+
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="5"><span class="text-danger pull-right">总价：<span style="font-size: 30px;" id="totalPrice">0</span>元</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <a href="javascript:;" id="payAllBtn" class="pull-right btn  btn-success">立即支付</a></td>
+                    </tr>
+
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- 底部分类 -->
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-3 column">
+                        <blockquote>
+                            <p>
+                                > 专注于电影资源的传播
+
+                            </p>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-6 column">
+                        <div class="row clearfix">
+                            <div class="col-md-4 column">
+                                <h4>常见问题</h4>
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">如何获取最新的电影资源？</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">如何购买VIP</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 column">
+                                <h4>帮助于反馈</h4>
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">如何找回密码？</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">手机号码如何登陆？</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-md-4 column">
+                                <h4>关于</h4>
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">发展历程</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <img alt="140x140" src="./public/imgs/qr.jpg"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- 顶部版权 -->
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-8 column">
+                <blockquote>
+                    <p>
+                        CopyRight &copy; 2019 我爱开发网官方网站
+                    </p>
+                    <small>专注于电影资源的传播 <a href="http://www.beian.miit.gov.cn">粤ICP备xx21114号</a></small>
+                </blockquote>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>
+<script src="./fetch.js"></script>
+<script src="./check.js"></script>
+</body>
+<script>
+    function getMovieDetail(url){
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url,
+                method: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    resolve(response.result.movieInfo)
+                },
+                error: function (error) {
+                    reject(error)
+                }
+            })
+        })
+    }
+
+    let token;
+    async function getCartList() {
+        token = sessionStorage.getItem('token');
+        if(!token){
+            // alert('登录后获取列表');
+            // 现在可以在客户端获取购物车的信息
+            let carts = localStorage.getItem('carts'); // null
+            carts = JSON.parse( carts ) || []; // 反序列化
+            console.log(carts);
+            let cartResults = [];
+            let tmp;
+            for (let i = 0; i < carts.length; i++) {
+                    tmp =  await  getMovieDetail( 'https://h5.woaikaifa.com/api/v1/movie/detail?movieId=' + carts[i] );
+                    cartResults.push( tmp );
+            }
+
+            let html = ``
+            let total = 0;
+            cartResults.forEach( (item, index) => {
+                total += parseInt( item.price );
+                html += `<tr>
+                            <td><input type="checkbox" data-id="${item._id}" name="selectAll"></td>
+                            <td>${index + 1}</td>
+                            <td><a href="/detail.html?movieId=${item._id}">${item.movieName}</a></td>
+                            <td><span class="text-danger">${item.price}</span></td>
+                            <td><a href="javascript:;"  data-id="${item._id}" class="btn btn-success payBtn">支付</a> <a href="#" class="btn btn-danger">移除</a></td>
+                        </tr>`
+            });
+            $("#content").html( html );
+            $("#totalPrice").text( total );
+
+            $("#content").click(function (e) {
+                if( !token ){
+                    alert('请登录后进行支付操作！');
+                    location.href = '/login.html';
+
+                    return;
+                }
+                // 只有点击支付这个按钮时候，才做支付操作
+                if( !$(e.target).hasClass('payBtn') ){
+                    return;
+                }
+
+                let movieId = $( e.target ).attr('data-id');
+
+                // 请求下单接口
+                let buyUrl = '/api/v1/h5/buy';
+
+                $.ajax({
+                    url: buyUrl,
+                    method: 'post',
+                    // 接口传递数据的格式为json
+                    // 1. 设置请求的编码
+                    contentType: "application/json;charset=utf-8",
+                    // 2. 手工序列化为json格式字符串
+                    data:  JSON.stringify( { movieId: [movieId], token} ),
+                    // 购买的movieId  token
+                    success: function (response) {
+                        if( response['mweb_url'] ){
+                            location.href = response['mweb_url'];
+
+                        }
+                    }
+                })
+            })
+
+            return;
+        }
+        let cartListUrl = `https://h5.woaikaifa.com/api/v1/cart/list`;
+
+        $.ajax({
+            url: cartListUrl,
+            method: 'post',
+            data:  { token },
+            success: function (response) {
+                if( response.error_code === 0 ){
+                    let result = response.result.cartsData[0].cartInfos;
+                    let html = ``
+                    let total = 0;
+                    result.forEach( (item, index) => {
+                        total += parseInt( item.price );
+                        html += `<tr>
+                            <td><input type="checkbox" data-id="${item._id}" name="selectAll"></td>
+                            <td>${index + 1}</td>
+                            <td><a href="/detail.html?movieId=${item._id}">${item.movieName}</a></td>
+                            <td><span class="text-danger">${item.price}</span></td>
+                            <td><a href="javascript:;"  data-id="${item._id}" class="btn btn-success payBtn">支付</a> <a href="#" class="btn btn-danger">移除</a></td>
+                        </tr>`
+                    });
+                    $("#content").html( html );
+                    $("#totalPrice").text( total );
+
+                    // 最外层的table 绑定一个点击事件；利用javascript里面的事件模型里面的冒泡机制；则可以把事件传递外层元素；同时利用 event 事件对象，记录事件发生的主体；完成单个支付，全选的支付，大家自己做
+                    $("#content").click(function (e) {
+                        // 只有点击支付这个按钮时候，才做支付操作
+                        if( !$(e.target).hasClass('payBtn') ){
+                            return;
+                        }
+
+                        let movieId = $( e.target ).attr('data-id');
+
+                        // 请求下单接口
+                        let buyUrl = '/api/v1/h5/buy';
+
+                        $.ajax({
+                            url: buyUrl,
+                            method: 'post',
+                            // 接口传递数据的格式为json
+                            // 1. 设置请求的编码
+                            contentType: "application/json;charset=utf-8",
+                            // 2. 手工序列化为json格式字符串
+                            data:  JSON.stringify( { movieId: [movieId], token} ),
+                            // 购买的movieId  token
+                            success: function (response) {
+                                if( response['mweb_url'] ){
+                                    location.href = response['mweb_url'];
+
+                                }
+                            }
+                        })
+                    })
+
+                }
+            }
+        })
+
+    }
+    getCartList();
+
+</script>
+<script>
+    $("#selectAll").click(function () {
+        let status = $(this).is(':checked');
+        // jq1.x 里面版本 ; 2.x已经被移出
+        $("input", '#content').prop('checked', status);
+
+    })
+
+    $("#payAllBtn").click(function () {
+        let allChecked = $("input:checked", '#content');
+        if(allChecked.length <= 0 ){
+            alert('请选择物品后进行支付！');
+            return;
+        }
+
+        var movieIds = [];
+        allChecked.each( (index, item) => {
+            movieIds.push( $(item).attr('data-id') );
+
+        } )
+
+        // 请求下单接口
+        let buyUrl = '/api/v1/h5/buy';
+
+        $.ajax({
+            url: buyUrl,
+            method: 'post',
+            // 接口传递数据的格式为json
+            // 1. 设置请求的编码
+            contentType: "application/json;charset=utf-8",
+            // 2. 手工序列化为json格式字符串
+            data:  JSON.stringify( { movieId: movieIds, token} ),
+            success: function (response) {
+                if( response['mweb_url'] ){
+                    location.href = response['mweb_url'];
+                }
+            }
+        })
+
+
+    })
+</script>
+</html>

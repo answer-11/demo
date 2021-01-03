@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <div id="app">
+        <button @click="add">点击加1</button>
+        <p>单价:{{price}}</p>
+        <p>购买数量:{{count}}</p>
+        <p>合计:{{total}}</p>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.0.0/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                count:1,
+                price:10,
+
+            },
+            methods:{
+                add:function(){
+                    this.count++
+                }
+            },
+            computed:{
+                total:function(callback){
+                    return this.count * this.price
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

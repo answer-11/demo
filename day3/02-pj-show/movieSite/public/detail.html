@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>	
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+	<script type='text/javascript' src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+	<title>电影详情页</title>
+</head>
+<body>
+	<!-- 导航 -->
+    <nav class="navbar navbar-default" role="navigation">
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">我爱电影网</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/index.html">我爱电影网</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/index.html">首页</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu" id="categoryContent">
+
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" name="kw" id="kw" class="form-control" />
+                    </div>
+                    <button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right" id="showUser">
+                    <li>
+                        <a href="./register.html">注册</a>
+                    </li>
+
+                    <li>
+                        <a href="./login.html">登录</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+	<!-- 巨幕 -->
+	<div class="container">
+			<div class="row clearfix">
+					<div class="col-md-12 column">
+						<div class="jumbotron">
+							<h1>
+								我爱电影网
+							</h1>
+							<p>
+								我爱电影网,涵盖最新电影、好看的电影、经典电影、电影推荐、免费电影、高清电影在线观看及海量最新电影图文视频资讯,看电影就上电影网dy.com。
+							</p>
+							<p>
+								 <a class="btn btn-primary btn-large" href="/index.html">查看更多</a>
+							</p>
+						</div>
+					</div>
+				</div>
+	</div>
+	<hr>
+
+	<!-- 主要区域  -->
+	<div class="container">
+			<div class="row clearfix">
+				<div class="col-sm-offset-1 col-md-10">
+					<div class="row">
+						<div class="col-md-4">
+							<img width="300" id="movieImg" src="./public/imgs/xs1.png" />
+						</div>
+						<div class="col-md-8">
+								<div class="list-group">
+										<h2 class="list-group-item active" id="movieName" style="margin-top: 0px;">肖申克的救赎 <span class="btn btn-success" id="fav">收藏</span></h2>
+									   <div class="list-group-item">
+											<h4>导演: <span id="director"></span></h4>
+									   </div>
+									   <div class="list-group-item">
+											<h4>编剧: <span id="bianju"></span></h4>
+									   </div>
+									   <div class="list-group-item">
+											<h4>主演: <span id="actors"></span> </h4>
+									   </div>
+									   <div class="list-group-item">
+											<h4>类型: <span id="cateId"></span></h4>
+									   </div>
+										<div class="list-group-item">
+											<!--<a class="btn btn-danger hidden" id="isVip" href="#">购买</a>-->
+										</div>
+
+								</div>
+						</div>
+					</div>
+					
+					<h3 class="text-success">剧情简介</h3>
+					<p class="infos">
+							　
+
+					</p>
+
+					<h3 class="text-danger">精彩短评</h3>
+					<div class="discuzs">
+
+					</div>
+					<hr>
+					<form>
+						<div class="form-group">
+							<textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
+						</div>
+						<button type="button" id="commentBtn" class="btn btn-success btn-lg btn-block">提交评论</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	
+	<hr>
+
+	<!-- 底部分类 -->
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="row clearfix">
+					<div class="col-md-3 column">
+						<blockquote>
+							<p>
+								> 专注于电影资源的传播
+
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6 column">
+						<div class="row clearfix">
+							<div class="col-md-4 column">
+								<h4>常见问题</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何获取最新的电影资源？</a>
+									</li>
+									<li>
+											<a href="javascript:;">如何购买VIP</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>帮助于反馈</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何找回密码？</a>
+									</li>
+									<li>
+										<a href="javascript:;">手机号码如何登陆？</a>
+									</li>
+									
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>关于</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">发展历程</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<img alt="140x140" src="./public/imgs/qr.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<!-- 顶部版权 -->
+	<div class="container">
+		<div class="row clearfix">
+				<div class="col-md-8 column">
+					<blockquote>
+						<p>
+							CopyRight &copy; 2019 我爱开发网官方网站
+						</p> <small>专注于电影资源的传播  <a href="http://www.beian.miit.gov.cn">粤ICP备xx21114号</a></small>
+					</blockquote>
+				</div>
+				
+		</div>		
+	</div>
+</body>
+<script src="./fetch.js"></script>
+<script src="./check.js"></script>
+<script src="./ajax.js"></script>
+<script type='text/javascript'>
+	let currentUrl = location.href.split('?');
+	currentUrl = currentUrl[1].split('=');
+	let movieId = currentUrl[1];
+	let detailUrl = `/api/v1/movie/detail?movieId=${movieId}`;
+	let commentListUrl = `/api/v1/member/commentList?movieId=${movieId}&size=2`;
+	let token = sessionStorage.getItem('token');
+
+	function getCommentList(){
+		fetch('get', commentListUrl, null, response => {
+			if(response.error_code === 0 ){
+				let html = ``
+				response.result.commentList.forEach(item => {
+					html += `<div class="media">
+									<a href="javascript:;" class="pull-left"><img width="100" src="${item.memberInfo.avatar}" class="media-object" alt='' /></a>
+								   <div class="media-body">
+									   <h4 class="media-heading">
+											${item.memberInfo.username}
+									   </h4>
+									   <p>${item.content}</p>
+									   <p>时间：${item.createdAt}</p>
+								   </div>
+							   </div>
+							   `
+				});
+				$('.discuzs').html( html );
+			}else{
+				alert('系统繁忙！');
+				return;
+			}
+
+		})
+	}
+
+	// 第一加载评论信息
+	getCommentList(commentListUrl);
+
+	getMovieData(detailUrl, (response) => {
+		if(response.error_code === 0 ){
+			$("#movieName").text( response.result.movieInfo.movieName);
+			$("#director").text( response.result.movieInfo.director);
+			$("#actors").text( response.result.movieInfo.actors);
+			$("#bianju").text( response.result.movieInfo.bianju);
+			$("#cateId").text( response.result.movieInfo.cateId);
+			$(".infos").text( response.result.movieInfo.descp);
+			$("#movieImg").attr('src', response.result.movieInfo.movieImg);
+
+			if( response.result.movieInfo.isVip ){
+				$("#isVip").removeClass('hidden');
+			}
+
+
+		}
+	})
+
+	$("#commentBtn").click(function () {
+		let content = $("#content").val().trim();
+		if(!content){
+			alert('评论信息不能为空！');
+			return;
+		}
+		let token = sessionStorage.getItem('token');
+
+		if(!token){
+			alert('请登录后在评论！');
+			location.href = '/login.html';
+			return;
+		}
+		let commentAddUrl = `/api/v1/member/commentAdd`;
+		let data = `movieId=${movieId}&content=${content}&token=${token}`
+		// 浏览器内置一个 api fetch、现在自己写了一个 fetch 浏览器覆盖了
+		fetch( 'post', commentAddUrl, data, response => {
+			if(response.error_code === 0){
+				// alert('评论成功！');
+
+				getCommentList(commentListUrl);
+				$("#content").val('');
+
+				return;
+			}else{
+				alert('评论失败！');
+				return;
+			}
+		}  )
+	})
+
+
+</script>
+</body>
+</html>

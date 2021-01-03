@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hander{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <hr>
+        <my-component/>
+ 
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //全局组件
+        //参数1：string 组件的名称，当组件定义后，我们可以在HTML的body里面，使用像原生标签的方式去使用组件
+        //参数2：object 组件的描述，一般我们称之为组件对象，大致描述
+        // a. 描述组件的结构 ，使用html描述
+        // b. 定义组件的样式 
+        // c. 定义组件的事件、行为 
+        // d. 定义组件的数据 
+        // e. 定义生命周期钩子 
+        Vue.component('my-component',{
+            data:function(){
+                return{
+                    counter : 0
+                }
+            },
+            creater(){
+                console.log("creater")
+                //发送ajax请求，调用后台接口，获取数据
+            },
+            template:`
+            <div>
+                <h2 class="hander" style="color:red">我是一个全局</h2>
+                <p>{{counter}}</p>
+                <button @click ="add">增加</button>
+                <button @click ="reduce">减少</button>
+            </div>
+            `,
+            methods:{
+                add:function(){
+                    // console.log(event)
+                    this.counter++
+                },
+                reduce:function(){
+                    // console.log(event)
+                    this.counter--
+                }
+            },
+           
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+           
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .router-link-active{
+            color: red;
+            text-decoration: none;
+            font-size: 30px;
+        } */
+        .active{
+            color: gold;
+            text-decoration: none;
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        
+            <router-link to='/home'>主页</router-link>
+            <router-link to='/news'>新闻</router-link>
+            <router-link to='/about'>关于</router-link>
+        
+        <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="./router/vue-router.js"></script>
+    <script>
+        //1.定义好组件对象
+        const Home = {
+            template: `
+                <div>
+                    <h2>主页的展示信息</h2>
+                    
+                </div>
+            `
+        }
+        const News = {
+            template: `
+                <div>
+                    <h2>新闻的展示信息</h2>
+                    <hr>
+                    <ul>
+                        <li><router-link to="/news/detail/1">新闻一</router-link></li>
+                <li><router-link to="/news/detail/2">新闻二</router-link></li>
+                <li><router-link to="/news/detail/3">新闻三</router-link></li>
+                <li><router-link to="/news/detail/4">新闻四</router-link></li>
+                    </ul>
+                    <hr>
+                    <router-view></router-view>
+                  
+                </div>
+            `
+        }
+        const About = {
+            template: `
+                <div>
+                    <h2>关于的展示信息</h2>
+                </div>
+            `
+        };
+        const Detail = {
+            created(){
+                console.log(this)
+                console.log(this.$route.params.id);
+            },
+            methods:{
+                goBack:function(){
+                    // 编程式导航完成跳转回主页
+                     this.$router.push('/home')//参数为要跳转的url
+                }
+            },
+            template: `
+                <div>
+                    <h2>新闻详情{{$route.params.id}}</h2>
+                    <button @click='goBack'>回到主页</button>
+                </div>
+            `
+        }
+        // 2.配置路由对象
+        const routes = [
+            {
+                path:'/',component:Home
+            },
+            { path: '/home', component: Home },
+            // 新闻的详情是在新闻组件内部显示，也可以这样，我们新闻的详情是嵌套在新闻组件里面的
+            //children是News的子类
+            {path: '/news', component: News, children: [
+                // 我们希望新闻的详情是在新闻组件内部显示，也可以这样，我们新闻的详情是嵌套在新闻组件里面的
+                //:id 相当于是一个占位符，可以代表任意的字符。我们将该占位符称之为路由参数
+                {path: 'detail/:id', component: Detail},
+
+            ]}, 
+            { path: '/about', component: About },
+         
+        ]
+
+        // 3.得到一个路由器对象
+        const router = new VueRouter({
+            routes, // (缩写) 相当于 routes: routes
+            linkActiveClass:'active'
+        })
+        // 4.将路由对象传递根组件
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            router
+        })
+    </script>
+</body>
+
+</html>

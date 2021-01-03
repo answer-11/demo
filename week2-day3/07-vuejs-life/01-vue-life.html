@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{title}}</p>
+        <!-- <ul v-for='ele in arrList'>
+            <li>序号：{{ele.id}}</li>
+            <li>名称：{{ele.goodsName}}</li>
+            <li>数量：{{ele.goodsNumber}}</li>
+            <li>价格：{{ele.goodsPrice}}</li>
+            <li><img :src="ele.goodsImage" alt=""></li>
+
+
+        </ul> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title:'hi vuejs',
+                arrList: ''
+            },
+            methods: {
+                add: function () {
+                      // 一般会在 created 里面完成异步请求
+                    var url = 'http://localhost:3000/cartList'
+                    fetch(url).then(response => {
+                        return response.json()
+                    })
+                        .then(json => {
+                            console.log(json)
+                            this.arrList = json;
+                        }).catch(error => {
+                            console.log(error)
+                        })
+                }
+            },
+            beforeCreate() {
+                  // vuejs 内部会执行该函数
+                console.log(this, this.$data,)
+            },
+            created() {
+                  // 一般来说，生命周期函数里面不要写多的业务逻辑，建议把业务逻辑提取为方法放置到 methods 里面。
+                this.add();
+                console.log(this, this.$data)
+            },
+            beforeMount() {
+                console.log(this, this.$data,)
+            },
+            mounted() {
+                console.log(this, this.$data,)
+            },
+            beforeUpdate() {
+                console.log(this, this.$data)
+            },
+            updated() {
+                console.log(this, this.$data)
+            }
+        })
+    </script>
+</body>
+
+</html>

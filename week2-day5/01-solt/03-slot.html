@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <my-component>你算哪块小饼干</my-component> -->
+        <!-- <my-component></my-component> -->
+        <div slot='header'>一刀流</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script>
+        Vue.component('my-component',{
+            template:`
+                <div>
+                    <div>流光闪</div>
+                    <slot name="header">天马流星拳</slot>
+                </div>
+            `
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{}
+        })
+    </script>
+</body>
+</html>

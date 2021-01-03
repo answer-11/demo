@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>兄弟之间的通信</h2>
+        <xiongda-component></xiongda-component>
+        <hr>
+        <xionger-component></xionger-component>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //定义好一个事件车
+        const EventBus = new Vue()
+        //在进行兄弟之间通信的时候，需要确定通信(主动)和被通信方(被动)
+        //
+        Vue.component("xionger-component",{
+            data:function(){
+                return{
+                    message:''
+                }
+            },
+            methods:{
+               clickbrother:function(){
+                    EventBus.$emit('waitletterPhone','好的没问题')
+               }
+            },
+            created(){
+                   //不使用箭头函数  this指向全局vue 将访问不到
+                // 使用箭头函数  this指向vue.component
+                EventBus.$on('waitBigBortherPhone',(data)=>{
+                    console.log('waitBigBortherPhone',data)
+                    this.message = data
+                })
+            },
+            template:`
+                <div>
+                    <p>xionger</p>
+                    <p>来自熊大的消息：{{message}}</p>
+                    <button @click='clickbrother'>call me my big to phone</button>
+                </div>
+            `,
+            // methods:{
+            //     passivity:function(){
+            //         "好滴，没毛病"
+            //     }   
+            // }
+        })
+        Vue.component("xiongda-component",{
+            data(){
+                return{
+                    message:''
+                }
+            },
+            methods:{
+                clickHanlder:function(){
+                    EventBus.$emit('waitBigBortherPhone',"今晚八点，一起攻打光头强")
+                }   
+            },
+            created(){
+                //不使用箭头函数  this指向全局vue 将访问不到
+                // 使用箭头函数  this指向vue.component
+                EventBus.$on('waitletterPhone',(data)=>{
+
+                    console.log(this)
+                    console.log(data)
+                    this.message = data
+                })
+            },
+            template:`
+                <div>
+                    <p>xiongda</p>
+                    <p>来自熊二的消息：{{message}}</p>
+                    <button @click="clickHanlder">call me to my little brother</button>
+                </div>
+            `,
+        })
+        var vm = new Vue({
+            el:"#app",
+            data:{}
+        })
+    </script>
+</body>
+</html>

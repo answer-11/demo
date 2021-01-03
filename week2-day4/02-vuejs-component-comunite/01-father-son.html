@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <father-component></father-component>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        //父子通信-嵌套
+        //父子通信，是将父组件data里面的数据传递到子组件即可
+        //通过属性传递
+         Vue.component('son-conponent',{
+            // prop 是子组件用来接受父组件传递过来的数据的一个自定义属性。
+            // 父组件的数据需要通过 props 把数据传给子组件
+            props: ['qian'],
+            template:`
+                <div>
+                    <p>son</p>
+                    <p>{{qian}}</p>
+                </div>
+            `,
+        })
+        //子组件是在父组件的template 里面使用
+        Vue.component('father-component',{
+            data(){
+                return{
+                    money:1000
+                }
+            },
+            //1.父组件通过属性传递的方式将自己的data数据传递给子组件。子组件的属性的名称需要事先在子组件里面通过props进行定义
+            template:`
+                <div>
+                    <p>father</p>
+                    <son-conponent :qian='money' ></son-conponent>
+                </div>
+            `,
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{}
+        })
+    </script>
+</body>
+</html>

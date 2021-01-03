@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>	
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+	<title>登录页面</title>
+</head>
+<body>
+	<!-- 导航 -->
+	<nav class="navbar navbar-default" role="navigation">
+
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">我爱电影网</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/index.html">我爱电影网</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="/index.html">首页</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
+						<ul class="dropdown-menu" id="categoryContent">
+
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" name="kw" id="kw" class="form-control" />
+					</div>
+					<button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right" id="showUser">
+					<li>
+						<a href="./register.html">注册</a>
+					</li>
+
+					<li>
+						<a href="./login.html">登录</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+
+	<!-- 巨幕 -->
+	<div class="container">
+			<div class="row clearfix">
+					<div class="col-md-12 column">
+						<div class="jumbotron">
+							<h1>
+								我爱电影网
+							</h1>
+							<p>
+								我爱电影网,涵盖最新电影、好看的电影、经典电影、电影推荐、免费电影、高清电影在线观看及海量最新电影图文视频资讯,看电影就上电影网dy.com。
+							</p>
+							<p>
+								 <a class="btn btn-primary btn-large" href="/index.html">查看更多</a>
+							</p>
+						</div>
+					</div>
+				</div>
+	</div>
+	<hr>
+
+	<!-- 主要区域  -->
+	<div class="container">
+			<div class="row clearfix">
+				<div class="col-sm-offset-1 col-md-10">
+						<h2 class="text-success">用户登录</h2>
+						<form>
+								<div class="form-group">
+								  <label for="username">用户名</label>
+								  <input type="text" name="username" class="form-control" id="username" placeholder="username or email...">
+								</div>
+								<div class="form-group">
+								  <label for="password">密 码</label>
+								  <input type="password" name="password" class="form-control" id="password" placeholder="Password...">
+								</div>
+								<button type="button" id="loginBtn" class="btn btn-success">登录</button>
+							  </form>
+				</div>
+			</div>
+		</div>
+	
+	<hr>
+
+	<!-- 底部分类 -->
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="row clearfix">
+					<div class="col-md-3 column">
+						<blockquote>
+							<p>
+								> 专注于电影资源的传播
+
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6 column">
+						<div class="row clearfix">
+							<div class="col-md-4 column">
+								<h4>常见问题</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何获取最新的电影资源？</a>
+									</li>
+									<li>
+											<a href="javascript:;">如何购买VIP</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>帮助于反馈</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何找回密码？</a>
+									</li>
+									<li>
+										<a href="javascript:;">手机号码如何登陆？</a>
+									</li>
+									
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>关于</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">发展历程</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<img alt="140x140" src="./public/imgs/qr.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<!-- 顶部版权 -->
+	<div class="container">
+		<div class="row clearfix">
+				<div class="col-md-8 column">
+					<blockquote>
+						<p>
+							CopyRight &copy; 2019 我爱开发网官方网站
+						</p> <small>专注于电影资源的传播  <a href="http://www.beian.miit.gov.cn">粤ICP备xx21114号</a></small>
+					</blockquote>
+				</div>
+				
+		</div>		
+	</div>
+</body>
+<script src="./fetch.js"></script>
+<script src="./check.js"></script>
+<script>
+	$("#loginBtn").click(function () {
+		// 点击注册按钮，收集注册信息
+		let username = $("#username").val().trim();
+		let password = $("#password").val().trim();
+
+		if( !username || !password  ){
+			alert('信息不完整，请填写完整！');
+			return;
+		}
+		let registerUrl = `/api/v1/member/login`;
+		let data = `username=${username}&password=${password}`;
+		fetch('post', registerUrl, data, response => {
+			if(response.error_code === 0){
+				// 1. 存储 头像，用户名和服务器颁发的token（下一次需要鉴权的接口，需要携带token）
+				// 客户端存储技术除了cookie，还有 localStorage。sessionStrorage;
+				// 建议使用sessionStorage
+				sessionStorage.setItem('username', response.result.username);
+				sessionStorage.setItem('avatar', response.result.avatar);
+				sessionStorage.setItem('token', response.result.token);
+
+				// 登录成功。转存操作，需要把 客户端里面的购物车信息转存到 MongoDB数据库
+				let carts = localStorage.getItem('carts'); // null
+				carts = JSON.parse( carts ) || []; // 反序列化
+				console.log(carts);
+				// 存储的接口
+
+				carts.forEach(item => {
+					// 购物车接口 循环遍历，进行加入
+					let cartUrl = 'https://h5.woaikaifa.com/api/v1/cart/add';
+					$.ajax({
+						url: cartUrl,
+						method: 'post',
+						data:  {movieId: item, token: response.result.token},
+						success: function (response) {
+							console.log(response); // 返回最新的购物车信息
+							// 严格操作，应该是等网络请求完成后，成功加入存储在MongoDB里面之后才清除
+
+						}
+					})
+
+				});
+				// 请求本地存储的购物车信息
+				localStorage.removeItem('carts');
+
+				location.href='/index.html';
+
+
+			}else{
+				alert(response.reason + ' ，联系管理员！');
+				return;
+			}
+		})
+
+	})
+
+</script>
+
+</body>
+</html>

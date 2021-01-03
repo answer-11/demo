@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script>
+        // 组件的组成 1.结构 2 样式 3 行为 4 数据（data） 5生命周期函数
+        Vue.component("my-component",{
+            data(){
+                return{
+                    title:dom
+                }
+            },
+            template:`
+                <div>
+                    <h2>VirtualDOM</h2>
+                </div>
+            `
+        });
+        // const obj = {
+        //     template:`
+        //         <div>
+        //             <h2>VirtualDOM</h2>
+        //         </div>
+        //     `
+        // }
+        
+        //我们在实例化vue的时候 其实vue也是一个组件 我们称之为根组件
+        // root组件 页面上的其他组件都是该组件的嵌套组件
+
+        // 如果我们的根组件里面存在 tempalte 属性，则在实例化根组件后，会拿 template里面的标签替换页面的 vue管理
+        // 的区域。template的优先级是高于 el 属性，如果没有 template 属性，则 el 相当于是根组件的 template。
+        // 根组件 除了 el 和 template的方式定义页面的结构，还可以使用一个 render  的函数来进行页面结构的定义。
+        var vm = new Vue({
+            el:'#app',
+            data:{},
+            template:`
+                <div>
+                    <h2>根组件</h2>
+                </div>
+            `,
+            // render:function(createElement){
+                  // render函数的返回值就是 该组件的页面结构
+            // 返回的内容是一个 虚拟DOM。
+            // 该虚拟DOM是通过 传递的 createElement 函数进行生成的。
+            // createElement 该函数的参数是什么？
+            // 该函数的参数是一个组件的描述对象
+
+            // 什么是虚拟 DOM？
+            // 在 vuejs 里面通 vuejs 特定的 api(createElement) 函数，我们可以使用js对象的方式去描述一个 DOM 结构。
+            //  <div id=1 class='box' data-id=1>div里面的内容</div>
+            //大致类似： { type: 'div', props: [{id: 1, className: 'box', 'data-id': 1}], {
+            // childrens：['div里面的内容']} }---> 真实的DOm对象 document.createElement(obj.type)
+
+            // 虚拟DOm这个概念最先是 react（是 facebook下开发） 这个产品的开发工程师提出来。
+            // 当我们的数据发生变化的时候，传统的操作需要大量的DOM操作，但是现在只是数据变了，页面上
+            // 的很多的DOM结构被复用的。那么久没必要做DOM结构的全部的重新生成。 facebook 不是拿新生成的DOM
+            // 和老的DOM比较。而是提出另外一种，
+            // 首次，使用 js对象(旧 虚拟DOm) 的方式去描述页面的DOM结构
+            // 然后在把 虚拟的DOM转换为真实的DOM，插入到页面
+            // 然后浏览器渲染显示
+
+            // 接下来，如果数据发生变化，如果是传统的操作，导致页面的重新DOM生成，页面的重绘。
+            // facebook 的工程师基于新的数据出发，然后在生成一份基于变化数据的新的DOM结构（ 新 js对象）
+            // 然后在 使用一种叫做 diff（差异化比较） 的算法 比较 新的虚拟DOM 和 旧的虚拟DOm之间的差异，一般我们把这些差
+            // 异叫做 patch(补丁) 最后把这些差异的部分转换为真实的DOm插入到页面，实现渲染，看到最新的页面。
+
+            // 为什么要引入虚拟DOM？
+            // 较少页面的重绘，提升性能，用户体验变好。
+            // https://segmentfault.com/a/1190000017494569
+                // console.log(createElement(obj))  
+                // return createElement(obj)        
+            // }
+            
+        })
+    </script>
+</body>
+</html>

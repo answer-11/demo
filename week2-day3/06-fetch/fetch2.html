@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul v-for='ele in arrList'>
+            <li>序号：{{ele.id}}</li>
+            <li>名称：{{ele.goodsName}}</li>
+            <li>数量：{{ele.goodsNumber}}</li>
+            <li>价格：{{ele.goodsPrice}}</li>
+            <li><img :src="ele.goodsImage" alt=""></li>
+
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 方式二
+
+        var url = 'http://localhost:3000/cartList'
+        console.log(fetch)
+        // fetch(url).then(response => {
+        //     //fetch 方法   服务器返回回来的不是真实的具体数据(流数据)  而是一个综合的对象  
+        //     //所以需要调用 json()=> json格式  或text() => 字符串 方法  
+        //     return response.json();
+        //     console.log(response.json())
+        //  }).then((data) => {          
+        //         console.log(data)
+        //         var vm = new Vue({
+        //             el: '#app',
+        //             data: {
+        //                 arrList: data
+        //             }
+        //         })
+        //     }).catch(error =>{
+        //         console.log(error)
+        //     })
+
+        // 简写  和上面方式一样
+        fetch(url).then(response => {
+            console.log(response)
+            return response.json()
+        }).then(json => {
+            console.log(json)
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    arrList: json
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">CMS系统</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <!-- <a class="nav-link" href="#">用户管理 <span class="sr-only">(current)</span></a> -->
+                        <router-link to='/user'>用户管理 </router-link><span></span>
+                        <router-link to='/news'>新闻管理</router-link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="./router/vue-router.js"></script>
+    <script>
+        //1.用户管理组件
+        const UserComponent = {
+            template: `
+                <div>
+                    <div class="container">
+                        <div class="row">
+                             <div class="col-2">
+                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                   <li class="nav-link"> <router-link to='/user/list'>用户列表</router-link></li>
+                                  <li class="nav-link"><router-link to="/user/add">用户添加</router-link></li>
+                                </div>
+                            </div>
+    
+                            <div class="col-10">
+                            <router-view></router-view>
+                               
+                            </div>
+
+                        </div>
+                     </div>
+                </div>
+            `
+        }
+        const UserListComponent = {
+            template: `
+                <div>
+                
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                        </tr>
+                                            <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                     </tr>
+                                </tbody>
+                                </table>
+                         
+                </div>
+            `
+        }
+        const UserAddComponent = {
+            template: `
+                <div>
+                    <h2>添加表单</h2>
+                    <form action=''>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">用户名</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" >
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">密码</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" >
+                        </div>
+                        <button type="submit" class="btn btn-danger">提交</button>
+                        <button type="reset" class="btn btn-warning">重置</button>
+                    </form>
+
+                </div>
+            `
+        }
+        // 定义组件对象
+        // 2.新闻管理组件
+        const NewsComponent = {
+            template: `
+                <div>
+                    <h2>新闻组件</h2>
+                </div>
+            `
+        }
+
+        // 配置路由映射表
+        const routes = [
+            { path: '/', component: UserComponent },
+            {
+                path: '/user', component: UserComponent, children: [
+                    { path: 'list', component: UserListComponent },
+                    { path: 'add', component: UserAddComponent }
+                ]
+            },
+            { path: '/news', component: NewsComponent },
+
+        ]
+
+        // 3.得到一个路由器对象
+        const router = new VueRouter({
+            routes, // (缩写) 相当于 routes: routes
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            router
+        })
+    </script>
+</body>
+
+</html>

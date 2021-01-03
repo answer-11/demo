@@ -1,0 +1,29 @@
+{
+  "name": "02-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "less": "^3.13.0",
+    "less-loader": "^7.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "dev": "webpack --config webpack.config.dev.js --progress --color --watch",
+    "pro": "webpack --config webpack.config.pro.js --progress --color --watch",
+    "start:dev": "webpack-dev-server --config webpack.config.dev.js --progress --color --watch",
+    "bulding":"webpack --config webpack.config.js --progress --color --watch"
+  },
+  "dependencies": {
+    "bootstrap": "3",
+    "bootstrap-icons": "^1.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

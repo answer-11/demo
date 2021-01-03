@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component-show></my-component-show>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component("myComponentShow",{
+            data(){
+                return{
+                    counter:0
+                }
+            },
+            template:`
+                <div>
+                    <p>{{counter}}</p>
+                    <button @click="add">增加</button>
+                </div>
+            `,
+            methods:{
+                add:function(){
+                    this.counter++
+                }
+            }
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{}
+        })
+    </script>
+</body>
+</html>

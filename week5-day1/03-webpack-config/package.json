@@ -1,0 +1,14 @@
+{
+  "name": "02-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "dev":"webpack --config webpack.config.dev.js --progress --color --watch",
+    "pro":"webpack --config webpack.config.pro.js --progress --color --watch"
+  }
+}

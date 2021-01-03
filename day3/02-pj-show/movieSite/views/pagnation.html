@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .paginator {
+            text-align: center;
+
+        }
+
+        .paginator a {
+            display: inline-block;
+            background: #fff;
+            color: #888;
+            padding: 5px;
+            min-width: 15px;
+            border: 1px solid #E2E2E2;
+            text-decoration: none;
+
+        }
+
+        .paginator a {
+            display: inline-block;
+            padding: 5px;
+            min-width: 15px;
+            border: 1px solid #E2E2E2;
+        }
+
+        .paginator a:hover {
+            color: #fff9ec;
+            background: #009610;
+            border: 1px solid #E2E2E2;
+        }
+
+        .paginator a.paginator-current {
+            display: inline-block;
+            background: #009688;
+            color: #fff;
+            padding: 5px;
+            min-width: 15px;
+            border: 1px solid #009688;
+        }
+
+    </style>
+</head>
+<body>
+<div class="paginator">
+    <a href="/page/?page=1" class="paginator-current paginator-page-first">1</a>
+    <a href="/page/?page=2" class="paginator-page">2</a>
+    <a href="/page/?page=3" class="paginator-page">3</a>
+    <a href="/page/?page=4" class="paginator-page">4</a>
+    <a href="/page/?page=5" class="paginator-page paginator-page-last">5</a>
+    <a href="/page/?page=2" class="paginator-next">Next</a>
+</div>
+
+<div class="paginator"><a href="/page/?page=1" class="paginator-current paginator-page-first">1</a><a
+        href="/page/?page=2" class="paginator-page">2</a><a href="/page/?page=3" class="paginator-page">3</a><a
+        href="/page/?page=4" class="paginator-page">4</a><a href="/page/?page=5"
+                                                            class="paginator-page paginator-page-last">5</a><a
+        href="/page/?page=2" class="paginator-next">Next</a></div>
+
+
+</body>
+</html>

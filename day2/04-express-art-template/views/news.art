@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--占位符-->
+    <!--我们在页面里面事先定义好一些占位符的页面，我们称之为模板-->
+    <!--引擎这个工具可以把我们js里面的变量替换到这些占位符里面-->
+    <!--模板引擎：art-template jade pug ejs...-->
+    <!--模板引擎的底层：正则+替换-->
+    <h1>{{newsTitle}}</h1>
+    <ul>
+    {{each newsList}}
+       <li><a href="">序号： {{$index}}== {{$value.title}}</a></li>
+    {{/each}}
+    </ul>
+</body>
+</html>

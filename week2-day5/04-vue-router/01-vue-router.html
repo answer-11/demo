@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device.-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .router-link-active{
+            color:#58bc58;
+            text-decoration: none;
+            font-size: 30px;
+        } */
+        .active{
+            color: red;
+            text-decoration: none;
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 5. 定义导航链接 -->
+    <div id="app">
+        <p> 
+            <router-link to="/home">主页</router-link>
+            <router-link to="/about">关于</router-link>
+            <router-link to="/news">新闻</router-link>
+        </p>
+        <hr>
+        <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.1/jquery.js"></script>
+    <script src="./router/vue-router.js"></script>
+    <script>
+        console.log(VueRouter)
+        // 1 定义好组件对象
+        const Home = {
+            template: `
+                <div>
+                    <p>展示主页信息</p>    
+                </div>
+            `
+        }
+        const About = {
+            template: `
+                <div>
+                    <p>展示关于信息</p>    
+                </div>
+            `
+        }
+        const News = {
+            template: `
+                <div>
+                    <p>展示新闻信息</p>    
+                </div>
+            `
+        }
+        // 2 配置路由映射表
+        const routes = [
+            // 默认是首页展示
+            {
+                path:'/',component:Home
+            },
+            {
+                path: '/home', component: Home
+            },
+            {
+                path: '/about', component: About
+            },
+            {
+                path: '/news', component: News
+            }
+        ]
+        // 3.得到一个路由器对象
+        const router = new VueRouter({
+            routes ,// (缩写) 相当于 routes: routes
+            linkActiveClass:'active'
+            
+        })
+
+        
+        // const app = new Vue({
+        //     router
+        // }).$mount('#app')
+        // // Home.vue
+        // export default {
+        //     computed: {
+        //         username() {
+        //             // 我们很快就会看到 `params` 是什么
+        //             return this.$route.params.username
+        //         }
+        //     },
+        //     methods: {
+        //         goBack() {
+        //             window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+        //         }
+        //     }
+        // }
+        // 4. 将路由对象传递根组件
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            router
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>	
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+	<title>用户个人中心</title>
+</head>
+<body>
+	<!-- 导航 -->
+	<nav class="navbar navbar-default" role="navigation">
+
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">我爱电影网</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/index.html">我爱电影网</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="/index.html">首页</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
+						<ul class="dropdown-menu" id="categoryContent">
+
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" name="kw" id="kw" class="form-control" />
+					</div>
+					<button type="button" id="searchBtn" class="btn btn-default">搜索</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right" id="showUser">
+					<li>
+						<a href="./register.html">注册</a>
+					</li>
+
+					<li>
+						<a href="./login.html">登录</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+
+	<!-- 巨幕 -->
+	<div class="container">
+			<div class="row clearfix">
+					<div class="col-md-12 column">
+						<div class="jumbotron">
+							<h1>
+								我爱电影网
+							</h1>
+							<p>
+								我爱电影网,涵盖最新电影、好看的电影、经典电影、电影推荐、免费电影、高清电影在线观看及海量最新电影图文视频资讯,看电影就上电影网dy.com。
+							</p>
+							<p>
+								 <a class="btn btn-primary btn-large" href="/index.html">查看更多</a>
+							</p>
+						</div>
+					</div>
+				</div>
+	</div>
+	<hr>
+
+	<!-- 主要区域  -->
+	<div class="container">
+			<div class="row clearfix">
+				<div class="col-sm-offset-1 col-md-10">
+					<div class="row">
+						<div class="col-md-4"><img width="300" id="showAvatar"  src="./public/imgs/default.jpg" /></div>
+						<div class="col-md-8">
+								<div class="list-group">
+										<h2 class="list-group-item active" style="margin-top: 0px;">个人信息</h2>
+									   <div class="list-group-item">
+											<h4>用户名：<span id="username"></span></h4>
+                                       </div>
+
+                                       <div class="list-group-item">
+											<h4><a href="./update.html">修改信息</a></h4>
+                                       </div>
+                                       
+								</div>
+						</div>
+					</div>
+                    
+                    <hr>
+					<h3 class="text-success">收藏列表</h3>
+					
+                    <table  class="table table-bordered table-hover table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>电影名称</th>
+                                    <th>收藏时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="#">肖申克的救赎</a></td>
+                                    <td>2019年8月8日19:13:08</td>
+                                    <td><a href="#" class="btn btn-success">详情</a> <a href="#" class="btn btn-danger">移除</a></td>
+                                </tr>
+                                <tr>
+                                        <td>2</td>
+                                        <td><a href="#">霸王别姬</a></td>
+                                        <td>2019年7月8日19:13:08</td>
+                                        <td><a href="#" class="btn btn-success">详情</a> <a href="#" class="btn btn-danger">移除</a></td>
+                                    </tr>
+                                    <tr>
+                                            <td>3</td>
+                                            <td><a href="#">小鬼当家</a></td>
+                                            <td>2019年4月8日19:13:08</td>
+                                            <td><a href="#" class="btn btn-success">详情</a> <a href="#" class="btn btn-danger">移除</a></td>
+                                        </tr>
+                            </tbody>
+                        </table>
+
+				</div>
+			</div>
+		</div>
+	
+	<hr>
+
+	<!-- 底部分类 -->
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="row clearfix">
+					<div class="col-md-3 column">
+						<blockquote>
+							<p>
+								> 专注于电影资源的传播
+
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6 column">
+						<div class="row clearfix">
+							<div class="col-md-4 column">
+								<h4>常见问题</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何获取最新的电影资源？</a>
+									</li>
+									<li>
+											<a href="javascript:;">如何购买VIP</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>帮助于反馈</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">如何找回密码？</a>
+									</li>
+									<li>
+										<a href="javascript:;">手机号码如何登陆？</a>
+									</li>
+									
+								</ul>
+							</div>
+							<div class="col-md-4 column">
+								<h4>关于</h4>
+								<ul>
+									<li>
+										<a href="javascript:;">发展历程</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<img alt="140x140" src="./public/imgs/qr.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<!-- 顶部版权 -->
+	<div class="container">
+		<div class="row clearfix">
+				<div class="col-md-8 column">
+					<blockquote>
+						<p>
+							CopyRight &copy; 2019 我爱开发网官方网站
+						</p> <small>专注于电影资源的传播  <a href="http://www.beian.miit.gov.cn">粤ICP备xx21114号</a></small>
+					</blockquote>
+				</div>
+				
+		</div>		
+	</div>
+</body>
+<script src="./fetch.js"></script>
+<script src="./check.js"></script>
+</body>
+
+</html>
